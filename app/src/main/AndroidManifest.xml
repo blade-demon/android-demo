@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.gamepoch.profileui">
 
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
         android:allowBackup="true"
@@ -12,8 +13,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
+
         </activity>
-        <activity android:name=".HTTPActionActivity">
+        <activity android:name=".HTTPActionActivity" />
+
+        <!-- Polling Service -->
+        <service android:name=".PollingService">
+            <intent-filter>
+                <action android:name="com.gamepoch.profileui.PollingService" />
+            </intent-filter>
+        </service>
+
+        <activity android:name=".TimerActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -5,10 +5,13 @@ import android.support.constraint.ConstraintSet;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.transition.TransitionManager;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+
 import android.widget.ImageView;
+import com.gamepoch.profileui.utils.PollingUtils;
 
 /**
  * ConstraintLayout demo
@@ -25,6 +28,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        System.out.println("Start polling service...");
+        PollingUtils.startPollingService(this, 10, PollingService.class, PollingService.ACTION);
 
         // changing the status bar color to transparent
         Window w = getWindow();
@@ -54,4 +60,5 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
 }
